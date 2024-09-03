@@ -1,7 +1,8 @@
 on: [push]
-runs-on: self-hosted
+
 
 jobs:
+  runs-on: self-hosted
   test:
     # ...
     permissions:
