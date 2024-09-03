@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   fetch-secrets:
@@ -13,7 +14,7 @@ jobs:
       id-token: write
       contents: read
     steps:
-      - uses: infamousjoeg/conjur-action@v2.0.4
+      - uses: cyberark/conjur-action@v2.0.5
         with:
           url: https://shimcity.secretsmgr.cyberark.cloud/api
           account: conjur
@@ -21,5 +22,5 @@ jobs:
           secrets: |
             data/vault/Shimran-Github-Conjur/Operating%20System-UnixSSH-CONJUREX-Mygithubdbusername/password|CONJUR_PASS;data/vault/Shimran-Github-Conjur/Operating%20System-UnixSSH-CONJUREX-Mygithubdbusername/username|CONJUR_USERNAME;
       
-      - run: |       
+      - run: |
           echo $CONJUR_PASS
