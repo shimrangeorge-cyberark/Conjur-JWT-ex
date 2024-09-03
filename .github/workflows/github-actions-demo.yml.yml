@@ -1,0 +1,19 @@
+on: [push]
+runs-on: self-hosted
+
+jobs:
+  test:
+    # ...
+    permissions:
+      id-token: 'write'
+      contents: 'read'
+    steps:
+      # ...
+      - name: Import Secrets using CyberArk Conjur Secret Fetcher
+        uses: cyberark/conjur-action@v2.0.2
+        with:
+          url: https://shimcity.secretsmgr.cyberark.cloud/api
+          account: conjur
+          authn_id: ${{ secrets.CONJUR_AUTHN_ID }}
+          secrets: db/sqlusername|sql_username;db/sql_password
+      # ...
