@@ -18,7 +18,7 @@ jobs:
           account: conjur
           authn_id: github-jwt-shimran
           secrets: |
-            data/vault/Shimran-Github-Conjur/Operating System-UnixSSH-CONJUREX-Mygithubdbusername/password|CONJUR_PASS;data/vault/Shimran-Github-Conjur/Operating System-UnixSSH-CONJUREX-Mygithubdbusername/username|CONJUR_USERNAME;
+            data/vault/Shimran-Github-Conjur/Operating%20System-UnixSSH-CONJUREX-Mygithubdbusername/password|CONJUR_PASS;data/vault/Shimran-Github-Conjur/Operating%20System-UnixSSH-CONJUREX-Mygithubdbusername/username|CONJUR_USERNAME;
       
       - run: |       
           echo $CONJUR_PASS
