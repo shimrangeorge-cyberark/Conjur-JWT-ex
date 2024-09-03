@@ -8,41 +8,15 @@ on:
 jobs:
   fetch-secrets:
     runs-on: [self-hosted]  # Specify your self-hosted runner label and OS
-
+    permissions:
+      id-token: write
+      contents: read
     steps:
-
-    - name: Authenticate with Conjur and Fetch Secrets
-      env:
-        CONJUR_API_URL: https://shimcity.secretsmgr.cyberark.cloud/api/conjur
-        CONJUR_ACCOUNT: conjur
-        SECRET_ID: ${{ secrets.SECRET_ID }}  # Replace with your secret ID or path
-        JWT: ${{ secrets.JWT }}  # JWT token for authentication
-      run: |
-        echo "Authenticating with Conjur using JWT..."
-        # Authenticate and get a token using JWT
-        auth_response=$(curl -s --request POST "$CONJUR_API_URL/authn-jwt/$CONJUR_ACCOUNT/login" \
-          --header "Content-Type: application/json" \
-          --data "{\"jwt\": \"$JWT\"}")
-
-        auth_token=$(echo "$auth_response" | jq -r '.token')
-        if [ "$auth_token" == "null" ] || [ -z "$auth_token" ]; then
-          echo "Failed to authenticate with Conjur using JWT."
-          exit 1
-        fi
-
-        echo "Fetching secrets from Conjur..."
-        # Fetch the secret
-        secret_response=$(curl -s --request GET "$CONJUR_API_URL/secrets/$CONJUR_ACCOUNT/variable/$SECRET_ID" \
-          --header "Authorization: Token token=$auth_token")
-
-        secret_value=$(echo "$secret_response" | jq -r '.value')
-        if [ "$secret_value" == "null" ] || [ -z "$secret_value" ]; then
-          echo "Failed to fetch the secret."
-          exit 1
-        fi
-
-        # Output the secret to the GitHub Actions environment
-        echo "SECRET_VALUE=$secret_value" >> $GITHUB_ENV
-
-        echo "Secret fetched successfully!"name: Fetch Secrets from Conjur
-
+      - uses: infamousjoeg/conjur-action@v2.0.4
+        with:
+          url: https://shimcity.secretsmgr.cyberark.cloud/api
+          account: conjur
+          authn_id: inf-github
+          secrets: |
+            data/vault/Shimran-Github-Conjur/Operating System-UnixSSH-CONJUREX-Mygithubdbusername/password|CONJUR_PASS;data/vault/Shimran-Github-Conjur/Operating System-UnixSSH-CONJUREX-Mygithubdbusername/username|CONJUR_USERNAME;
+            echo $CONJUR_PASS
