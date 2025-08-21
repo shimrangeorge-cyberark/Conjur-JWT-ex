@@ -1,5 +1,5 @@
 
-# Credential Rotation Demo 5/22 demonstrate rotation
+# Credential Rotation Demo 8/21 demonstrate rotation
 # Runner hosted on cphost  run bash actions-runner/run.sh
 
 name: Fetch Secrets from Conjur
