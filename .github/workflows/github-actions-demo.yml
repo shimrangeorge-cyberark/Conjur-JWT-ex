@@ -1,6 +1,6 @@
 
-# Demo 12/16 Rotation
-# Runner hosted on cphost  run bash actions-runner/run.sh
+# Demo 12/18 First run
+# Runner hosted on cphost n bash actions-runner/run.sh
 
 name: Fetch Secrets from Conjur
 
