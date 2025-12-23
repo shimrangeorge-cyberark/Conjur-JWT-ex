@@ -1,5 +1,5 @@
 
-# Demo 12/22 rotation
+# Demo 12/23 
 # Runner hosted on cphost n bash actions-runner/run.sh
 
 name: Fetch Secrets from Conjur
@@ -9,7 +9,7 @@ on:
     branches:
       - main
   workflow_dispatch:
-
+  
 jobs:
   fetch-secrets:
     runs-on: [self-hosted]  # Specify your self-hosted runner label and OS
