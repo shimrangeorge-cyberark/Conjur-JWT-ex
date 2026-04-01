@@ -1,5 +1,5 @@
 
-# Demo 4/1 
+# Demo 4/1 rotation
 # Runner hosted on cphost n bash actions-runner/run.sh
 
 name: Fetch Secrets from Conjur
