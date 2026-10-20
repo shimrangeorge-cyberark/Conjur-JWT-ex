@@ -1,6 +1,6 @@
 
-# Demo 8/9 Second Attempt 
-# Runner hosted on cphost n bash actions-runner/run.sh
+ # 10/20 Demo
+ # Runner hosted on cphost n bash actions-runner/run.sh
 
 name: Fetch Secrets from Conjur
 
