@@ -1,6 +1,5 @@
 
- # 10/30 Run 2
- # Runner hosted on cphost n bash actions-runner/run.sh
+ # Runner hosted on cphost  bash actions-runner/run.sh
 
 name: Fetch Secrets from Conjur
 
@@ -12,7 +11,7 @@ on:
   
 jobs:
   fetch-secrets:
-    runs-on: [self-hosted]  # Specify your self-hosted runner label and OS
+    runs-on: [self-hosted]  
     permissions:
       id-token: write
       contents: read
